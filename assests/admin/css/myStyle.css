@@ -1,0 +1,59 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+	/*background-image: url(../images/image01.jpg);*/
+    background-size: cover;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    background-size: 100%;
+}
+.no-padding {
+	padding-top: 0px;
+	padding-bottom: 0px;
+  	padding-left: 0px;
+  	padding-right: 0px;
+}
+.no-margin{
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+
+}
+.myIcon{
+	height: 40px;
+	width: 40px;
+}
+.hideContent {
+    display: none;
+}
+.myMenue{
+	padding-top: 80px;
+}
+.myMenue a{
+	text-decoration: none;
+	/*position: relative;*/
+	padding-left: 60px;
+}
+.myMenue a img{
+	height: 40px;
+	width: 40px;
+}
+.myCvMenue a{
+	text-decoration: none;
+	padding-left: 30px;
+}
+.myCvMenue a img{
+	height: 40px;
+	width: 40px;
+}
+.mylistImage li{
+	list-style: none;
+	display: inline;
+}

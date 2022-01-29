@@ -1,0 +1,79 @@
+
+  <?php 
+  require 'assests/includes/header.php'; 
+  require 'assests/includes/functions.inc.php'; 
+  require 'assests/includes/connection.inc.php'; 
+
+  //----Selecting all the albums presented on databases
+
+  $query=@"SELECT * FROM gallery_album WHERE status=1 ORDER BY id DESC";
+  $selecting_album_res=mysqli_query($con,$query) or die(error_reporting(0));
+
+// Query About Me
+$query_about_me=@"SELECT * FROM about_user";
+$about_me_res=fetch($con,$query_about_me);
+
+  ?>
+
+<!DOCTYPE html>
+<html>
+
+<body><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lorem-ipsum Gallery</title>
+  <link rel="stylesheet" type="text/css" href="assests/css/myStyle.css">
+  <link rel="stylesheet" type="text/css" href="assests/css/bootstrap.min.css">
+  <script type="text/javascript" src="assests/js/jquery.min.js"></script>
+  <script src="assests/js/bootstrap.bundle.min.js"></script>
+  <script src="assests/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .cardContents {
+      /*padding: 20px;*/
+    }
+    .card .card-body{
+      background-color: #ffffff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .card img{
+      height: 200px;
+      width: 16.9rem;
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- -------------------Start of gallery Section -->
+<div class="container-lg"><br>
+<nav class="navbar navbar-light">
+  <p class="border-primary text-center" style="padding-top: 10px;">
+    <a href="index.php" style="text-decoration: none;color: white; padding: 15px;">Home</a>
+  </p>
+  <h1 class="text-white" align="right" style="font-family: serif; font-style: italic;padding-top: 30px;"><?php echo($about_me_res['name']); ?> Gallery</h1>
+</nav>
+<br><br>
+<!-- -------------------Start of gallery Section -->
+  <section class="gallery min-vh-100">
+      <div class="container-lg">
+          <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+          <?php while ($selecting_album_rows=mysqli_fetch_assoc($selecting_album_res)) { ?>
+        <div class="col">
+                  <div class="card pl-2 py-2" style="width: 16rem;">
+            <img class="card-img-top" src="assests/images/<?php echo($selecting_album_rows['cover_image']); ?>" alt="<?php echo($selecting_album_rows['album_name'])."images"; ?>" style="height: 200px;width: 200px;">
+            <div class="card-body">
+              <h5 class="card-title">
+                <?php echo $selecting_album_rows['album_name']; ?>
+              </h5>
+              <a href="gallery_images.php?gallery_id=<?php echo($selecting_album_rows['id']); ?>" class="btn btn-primary d-grid">VIEW</a>
+            </div>
+                  </div>
+              </div>
+        <?php }  ?>
+      </div>
+      </div>
+  </section>
+</div>
+</body>
+</html>
